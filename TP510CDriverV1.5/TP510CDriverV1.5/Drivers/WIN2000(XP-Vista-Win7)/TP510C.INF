@@ -1,0 +1,110 @@
+; Copyright (c) 2017 KONGYUE Corporation.
+;
+;	Printer Installation File
+;
+;	List of supported printers, manufacturers
+;
+
+[Version]
+Signature="$Windows NT$"
+Provider=%ProviderName%
+ClassGUID={4D36E979-E325-11CE-BFC1-08002BE10318}
+Class=Printer
+DriverVer=08/16/2017,1.2.0.0
+CatalogFile=TP510C.cat
+;
+; Manufacturer section.
+;
+; This section lists all of the manufacturers
+; that we will display in the Dialog box
+;
+
+[Manufacturer]
+%Providername%= Jolimark, NTx86.6.0, NTamd64.5.1
+;
+; Model Specifications Section
+;
+
+[Jolimark]
+"Jolimark TP510C" = TP510C.files,LPTENUM\Jolimark_TP510CAFE2,JOLIMARK_TP510C_Thermal_Printer
+"Jolimark TP510C" = TP510C.files,USBPRINT\Jolimark_TP510CAFE2,JOLIMARK_TP510C_Thermal_Printer
+"Jolimark TP510C" = TP510C.files,SERENUM\Jolimark_TP510CAFE2,JOLIMARK_TP510C_Thermal_Printer
+
+[Jolimark.NTx86.6.0]
+"Jolimark TP510C" = TP510C.files,LPTENUM\Jolimark_TP510CAFE2,JOLIMARK_TP510C_Thermal_Printer
+"Jolimark TP510C" = TP510C.files,USBPRINT\Jolimark_TP510CAFE2,JOLIMARK_TP510C_Thermal_Printer
+"Jolimark TP510C" = TP510C.files,SERENUM\Jolimark_TP510CAFE2,JOLIMARK_TP510C_Thermal_Printer
+
+[Jolimark.NTamd64.5.1]
+"Jolimark TP510C" = TP510C.files64,LPTENUM\Jolimark_TP510CAFE2,JOLIMARK_TP510C_Thermal_Printer
+"Jolimark TP510C" = TP510C.files64,USBPRINT\Jolimark_TP510CAFE2,JOLIMARK_TP510C_Thermal_Printer
+"Jolimark TP510C" = TP510C.files64,SERENUM\Jolimark_TP510CAFE2,JOLIMARK_TP510C_Thermal_Printer
+
+[UNIDRV_DATA1]
+DriverFile=UNIDRV.DLL
+ConfigFile=UNIDRVUI.DLL
+HelpFile=UNIDRV.HLP
+
+[TP510C.files]
+CopyFiles=@TP510C.DLL,@TP510C.GPD,OEM_PROCES,OEM_CONFIG,@TP510C_Settings.Dat,LNGMON
+DataSection=UNIDRV_DATA1
+DataFile=TP510C.GPD
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM
+LanguageMonitor=%STR_LANGMONITOR%
+
+[TP510C.files64]
+CopyFiles=@TP510C.DLL,@TP510C.GPD,OEM_PROCES,OEM_CONFIG,@TP510C_Settings.Dat,LNGMON
+DataSection=UNIDRV_DATA1
+DataFile=TP510C.GPD
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM
+LanguageMonitor=%STR_LANGMONITOR%
+
+[LNGMON]
+JMPLM.DLL,,,0x20
+
+[OEM_CONFIG]
+jSettings2.ini,,,0x20
+jSettingsui.dll,,,0x20
+jmGraphicsuni.dll,,,0x20
+JMSettingManager2P,,,0x20
+JMP_RW.dll,,,0x20
+
+[DestinationDirs]
+DefaultDestDir=66000
+
+[SourceDisksNames]
+81 = %disk1%,,,\i386
+
+[SourceDisksNames.x86]
+1 = %disk1%,,,\i386
+
+[SourceDisksNames.amd64]
+1 = %disk1%,,,\X64
+
+[SourceDisksNames.IA64]
+1 = %disk1%,,,\IA64
+
+[SourceDisksFiles]
+TP510C.GPD = 81
+TP510C.dll = 1
+TP510C_Settings.Dat = 81
+jSettings2.ini = 1
+jSettingsui.dll = 1
+jmGraphicsuni.dll = 1
+JMSettingManager2P = 81
+JMP_RW.dll = 81
+JMPLM.DLL = 1
+
+[OEM URLs]
+%ProviderName% = %JolimarkURL%
+
+[Strings]
+PrinterClassName="Printers"
+ProviderName="Jolimark"
+JolimarkURL = "http://www.Jolimark.com"
+disk1="Jolimark Printer Driver Setup Disk"
+DRVNAME = "Jolimark TP510C"
+STR_LANGMONITOR="JM Job and Transmission Language Monitor,JMPLM.DLL"
+

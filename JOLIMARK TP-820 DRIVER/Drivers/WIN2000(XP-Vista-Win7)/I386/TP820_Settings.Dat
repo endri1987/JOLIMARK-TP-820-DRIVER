@@ -1,0 +1,232 @@
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////       指令定义 Names       ////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+[SectionNames]
+SectionCount = 2
+Section01 = COM_SETTINGS
+Section02 = OTHER
+EnterInstruction = 1B 1D 1E 05 01 1B 1D 1F
+SaveInstruction = 1B 1D 1E 05 02 1B 1D 1F
+GetInstruction1 =
+GetInstruction2 =
+InstructionTail = 1B 1D 1F
+ParameterRule = High256
+Landscape_Compress = 0
+
+[Section01]
+ItemCount = 5
+Item01 = Baud_Rate
+Item01Instruction = 1B 1D 1E 03 01
+Item02 = Parity
+Item02Instruction = 1B 1D 1E 03 02
+Item03 = Data_Bit
+Item03Instruction = 1B 1D 1E 03 03
+Item04 = Stop_Bit
+Item04Instruction = 1B 1D 1E 03 04
+Item05 = Protocol
+Item05Instruction = 1B 1D 1E 03 05
+
+//////////////////////////////////////////////////////////////////////////////////////////
+;***************************    选项过滤定义文件 Filter      *****************************
+//////////////////////////////////////////////////////////////////////////////////////////
+
+;************************************************************************************************
+[COM_SETTINGS_Filter]
+SectionEnable =			1
+;01 波特率 Baud_Rate
+Baud_Rate = 			1
+;02 奇偶检验 Parity
+Parity = 				1
+;03 数据位数 Data_Bit
+Data_Bit = 				1
+;04 停止位 Stop_Bit
+Stop_Bit = 				1
+;05 协议 Protocol
+Protocol = 				1
+
+////////////////////////////////////////////////////////////////////////////////////
+;***************************       参数规则定义 Rule      **************************
+////////////////////////////////////////////////////////////////////////////////////
+
+;************************************************************************************************
+[COM_SETTINGS_Rule_CN]
+;01 波特率 Baud_Rate
+Baud_Rate_RuleType = 		Enum
+Baud_Rate_Rule =   			0=1200 BPS  1=2400 BPS  2=4800 BPS  3=9600 BPS  4=19200 BPS  5=38400 BPS  6=57600 BPS  7=115200 BPS
+;02 奇偶检验 Parity
+Parity_RuleType = 			Enum
+Parity_Rule =           	0=无  1=奇校验  2=偶检验
+;03 数据位数 Data_Bit
+Data_Bit_RuleType = 		Enum
+Data_Bit_Rule =      		0=8 位  1=7 位
+;04 停止位 Stop_Bit
+Stop_Bit_RuleType = 		Enum
+Stop_Bit_Rule =         	0=1 位  1=2 位
+;05 协议 Protocol
+Protocol_RuleType = 		Enum
+Protocol_Rule =             0=XON/XOFF  1=DTR
+
+////////////////////////////////////////////////////////////////////////////////////
+;*************************       英文参数规则定义 Rule      ************************
+////////////////////////////////////////////////////////////////////////////////////
+
+;************************************************************************************************
+[COM_SETTINGS_Rule_EN]
+;01 波特率 Baud_Rate
+Baud_Rate_RuleType = 		Enum
+Baud_Rate_Rule =   			0=1200 BPS  1=2400 BPS  2=4800 BPS  3=9600 BPS  4=19200 BPS  5=38400 BPS  6=57600 BPS  7=115200 BPS
+;02 奇偶检验 Parity
+Parity_RuleType = 			Enum
+Parity_Rule =           	0=NONE  1=ODD  2=EVEN
+;03 数据位数 Data_Bit
+Data_Bit_RuleType = 		Enum
+Data_Bit_Rule =      		0=8 bits  1=7 bits
+;04 停止位 Stop_Bit
+Stop_Bit_RuleType = 		Enum
+Stop_Bit_Rule =         	0=1 bit  1=2 bits
+;05 协议 Protocol
+Protocol_RuleType = 		Enum
+Protocol_Rule =             0=XON/XOFF  1=DTR
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+;********************************         提示信息配置文件 Lang       *******************************
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+;****************************************************
+[COM_SETTINGS_Lang_CN]
+Title = 串口设置
+Note = 设置打印机的串口参数      请选择一个子项目
+;01 波特率 Baud_Rate
+Baud_Rate_Title = 波特率
+Baud_Rate_Note =  选择打印机波特率			* 重新启动打印机后生效 *
+;02 奇偶检验 Parity
+Parity_Title = 奇偶检验
+Parity_Note =  选择奇偶检验位数			* 重新启动打印机后生效 *
+;03 数据位数 Data_Bit
+Data_Bit_Title = 数据位数
+Data_Bit_Note =  选择数据位数				* 重新启动打印机后生效 *
+;04 停止位 Stop_Bit
+Stop_Bit_Title = 停止位
+Stop_Bit_Note =  选择停止位数				* 重新启动打印机后生效 *
+;05 协议 Protocol
+Protocol_Title = 协议
+Protocol_Note =  选择数据校验协议			* 重新启动打印机后生效 *
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+*****************************         英文提示信息配置文件 Lang       *******************************
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+
+;****************************************************
+[COM_SETTINGS_Lang_EN]
+Title = serial port settings
+Note = serial port settings            please select a subitem
+;01 波特率 Baud_Rate
+Baud_Rate_Title = baud rate
+Baud_Rate_Note =  serial port baud rate			* need restart printer *
+;02 奇偶检验 Parity
+Parity_Title = parity
+Parity_Note =  serial port parity				* need restart printer *
+;03 数据位数 Data_Bit
+Data_Bit_Title = data bits
+Data_Bit_Note =  serial port data bit			* need restart printer *
+;04 停止位 Stop_Bit
+Stop_Bit_Title = stop bits
+Stop_Bit_Note =  serial port stop bit			* need restart printer *
+;05 协议 Protocol
+Protocol_Title = protocol
+Protocol_Note =  serial port protocol			* need restart printer *
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+;******************************       选项默认值定义文件 Default     *****************************
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+;************************************************************************************************
+[COM_SETTINGS_Default]
+;01 波特率 Baud_Rate 0=1200BPS  1=2400BPS
+Baud_Rate = 3
+Baud_Rate_Rule =   			n=0 1200BPS  n=1 2400BPS  2=4800BPS  3=9600BPS  4=19200BPS  5=38400 BPS  6=57600 BPS  7=115200 BPS
+;02 奇偶检验 Parity
+Parity = 0
+Parity_Rule =           	0=无  1=奇校验  2=偶检验
+;03 数据位数 Data_Bit
+Data_Bit = 0
+Data_Bit_Rule =      		0=8位  1=7位
+;04 停止位 Stop_Bit
+Stop_Bit = 0
+Stop_Bit_Rule =         	0=1位  1=2位
+;05 协议 Protocol
+Protocol = 1
+Protocol_Rule =             0=XON/XOFF  1=DTR
+
+;***************************** 其它设置 ******************************
+[Section02]
+ItemCount = 4
+Item01 = WorkMode
+Item01Instruction = 1B 1D 1E 00 0C
+Item02 = HighSpeed
+Item02Instruction = 1B 1D 1E 00 0F
+Item03 = ErrorBeep
+Item03Instruction = 1B 1D 1E 01 01
+Item04 = SelfTest
+Item04Instruction = 1B 1D 1E 01 02
+
+[OTHER_Filter]
+SectionEnable = 1
+WorkMode = 1
+HighSpeed = 1
+ErrorBeep = 1
+SelfTest = 1
+
+[OTHER_Rule_CN]
+WorkMode_RuleType = 		Enum
+WorkMode_Rule =   			0=EPSON模式  1=STAR模式  4=原始模式  5=原始模式2  
+HighSpeed_RuleType =        Enum
+HighSpeed_Rule =            0=质量优先  1=速度优先
+ErrorBeep_RuleType = 		Enum
+ErrorBeep_Rule =            0=关  1=开
+SelfTest_RuleType = 		Enum
+SelfTest_Rule =             0=关  1=开
+
+[OTHER_Rule_EN]
+WorkMode_RuleType = 		Enum
+WorkMode_Rule =   			0=EPSON  1=STAR  4=Native  5=Native2  
+HighSpeed_RuleType =        Enum
+HighSpeed_Rule =            0=prefer quality  1=prefer speed
+ErrorBeep_RuleType = 		Enum
+ErrorBeep_Rule =            0=OFF  1=ON
+SelfTest_RuleType = 		Enum
+SelfTest_Rule =             0=OFF  1=ON
+
+[OTHER_Lang_CN]
+Title = 其它设置
+Note = 设置其它参数      请选择一个子项目
+WorkMode_Title = 仿真模式
+WorkMode_Note =  选择打印机工作模式			* 重新启动打印机后生效 *
+HighSpeed_Title = 打印方式
+HighSpeed_Note =  选择打印质量/速度			* 重新启动打印机后生效 *
+ErrorBeep_Title = 故障时蜂鸣器响
+ErrorBeep_Note =  选择打印机故障时蜂鸣器响		* 重新启动打印机后生效 *
+SelfTest_Title = 自检打印字库
+SelfTest_Note =  选择打印机自检时打印字库		* 重新启动打印机后生效 *
+
+[OTHER_Lang_EN]
+Title = other settings
+Note = other settings      please select a subitem
+WorkMode_Title  = Emulation
+WorkMode_Note   = Select Emulation Mode			* need restart printer *
+HighSpeed_Title = Printing Method
+HighSpeed_Note  = Select Quality/Speed			* need restart printer *
+ErrorBeep_Title = Beep During Error
+ErrorBeep_Note  = Select Beep During Error			* need restart printer *
+SelfTest_Title  = Print Chinese Characters in self test
+SelfTest_Note   = Print Chinese Characters in self test		*need restart printer*
+
+[OTHER_Default]
+WorkMode = 4
+HighSpeed = 1
+ErrorBeep = 0
+SelfTest = 1

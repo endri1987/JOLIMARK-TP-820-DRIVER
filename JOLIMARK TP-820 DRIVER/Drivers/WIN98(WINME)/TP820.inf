@@ -1,0 +1,57 @@
+;       Copyright (c) 2010 Jolimark
+;
+;	Printer Installation File
+;	List of supported printers, manufacturers
+;
+[Version]
+ Signature="$CHICAGO$"
+ ver=01.00.00
+ Class=Printer
+ Provider=%KONGYUE_JOLIMARK%
+ LayoutFile=layout.inf
+
+
+[Manufacturer]
+ %KONGYUE_JOLIMARK%=TP820
+
+[TP820]
+ "Jolimark TP820"=TP820.DRV,LPTENUM\Jolimark_TP8203CD3,JOLIMARK_TP820_Thermal_Printer
+
+[TP820.DRV]
+ CopyFiles=@TP820.DRV,UNI,MON,OEM_PROCES
+ DataSection=UNI_DATA
+ DriverFile=TP820.DRV
+ DataFile=TP820.DRV
+ PortMonitor=JMUSB,JMUsbMon.dll
+;PrintProcessor=JMProces,JMProces.dll
+
+[UNI]
+ UNIDRV.DLL,,,0x00000020         ; Copy only if new binary
+ UNIDRV.HLP,,,0x00000020         ; Copy only if new binary
+ ICONLIB.DLL,,,0x00000020         ; Copy only if new binary
+ DMCOLOR.DLL,,,0x00000020         ; Copy only if new binary
+
+[UNI_DATA]
+ HelpFile=UNIDRV.HLP
+ DefaultDataType=RAW
+
+[MON]
+ JMUsbMon.dll
+
+[OEM_PROCES]
+JMProces.dll
+
+[DestinationDirs]
+ DefaultDestDir=11
+ OEM_PROCES=66001
+
+[SourceDisksNames]
+ 1="Jolimark TP820 Driver Source Disk",,0
+
+[SourceDisksFiles]
+ TP820.DRV=1
+ JMUsbMon.dll=1
+;JMProces.dll=1
+
+[Strings]
+ KONGYUE_JOLIMARK="Kong Yue Jolimark "

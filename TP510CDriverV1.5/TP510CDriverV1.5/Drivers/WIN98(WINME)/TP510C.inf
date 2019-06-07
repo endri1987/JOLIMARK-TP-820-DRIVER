@@ -1,0 +1,59 @@
+;       Copyright (c) 2011 Jolimark
+;
+;	Printer Installation File
+;	List of supported printers, manufacturers
+;
+[Version]
+ Signature="$CHICAGO$"
+ ver=01.00.00
+ Class=Printer
+ Provider=%KONGYUE_JOLIMARK%
+ LayoutFile=layout.inf
+ DriverVer=08/15/2017,1.2.0.0
+
+
+[Manufacturer]
+ %KONGYUE_JOLIMARK%=TP510C
+
+[TP510C]
+ "Jolimark TP510C"=TP510C.DRV,LPTENUM\Jolimark_TP510CAFE2,JOLIMARK_TP510C_Thermal_Printer
+ "Jolimark TP510C"=TP510C.DRV,USBPRINT\Jolimark_TP510CAFE2,JOLIMARK_TP510C_Thermal_Printer
+
+[TP510C.DRV]
+ CopyFiles=@TP510C.DRV,UNI,MON,OEM_PROCES
+ DataSection=UNI_DATA
+ DriverFile=TP510C.DRV
+ DataFile=TP510C.DRV
+ PortMonitor=JMUSB,JMUsbMon.dll
+ PrintProcessor=JMProces,JMProces.dll
+
+[UNI]
+ UNIDRV.DLL,,,0x00000020         ; Copy only if new binary
+ UNIDRV.HLP,,,0x00000020         ; Copy only if new binary
+ ICONLIB.DLL,,,0x00000020         ; Copy only if new binary
+ DMCOLOR.DLL,,,0x00000020         ; Copy only if new binary
+
+[UNI_DATA]
+ HelpFile=UNIDRV.HLP
+ DefaultDataType=RAW
+
+[MON]
+ JMUsbMon.dll
+
+[OEM_PROCES]
+JMProces.dll
+
+[DestinationDirs]
+ DefaultDestDir=11
+ OEM_PROCES=66001
+
+[SourceDisksNames]
+ 1="Jolimark TP510C Driver Source Disk",,0
+
+[SourceDisksFiles]
+ TP510C.DRV=1
+ JMUsbMon.dll=1
+JMProces.dll=1
+
+[Strings]
+ KONGYUE_JOLIMARK="Jolimark "

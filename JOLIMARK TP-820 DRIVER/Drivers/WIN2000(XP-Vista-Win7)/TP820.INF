@@ -1,0 +1,132 @@
+; Copyright (c) 2011 KONGYUE Corporation.
+;
+;	Printer Installation File
+;
+;	List of supported printers, manufacturers
+;
+
+[Version]
+Signature="$Windows NT$"
+Provider=%ProviderName%
+ClassGUID={4D36E979-E325-11CE-BFC1-08002BE10318}
+Class=Printer
+DriverVer=09/28/2010,1.3
+CatalogFile=TP820.cat
+;
+; Manufacturer section.
+;
+; This section lists all of the manufacturers
+; that we will display in the Dialog box
+;
+
+[Manufacturer]
+%Providername%= Jolimark, NTx86.6.0, NTamd64.5.1, NTIA64.5.1
+;
+; Model Specifications Section
+;
+
+[Jolimark]
+"Jolimark TP820" = TP820.files,LPTENUM\Jolimark_TP820D046,Jolimark_TP820D046
+"Jolimark TP820" = TP820.files,USBPRINT\Jolimark_TP820D046,Jolimark_TP820D046
+"Jolimark TP820" = TP820.files,SERENUM\Jolimark_TP820D046,Jolimark_TP820D046
+
+[Jolimark.NTx86.6.0]
+"Jolimark TP820" = TP820.files,LPTENUM\Jolimark_TP820D046,Jolimark_TP820D046
+"Jolimark TP820" = TP820.files,USBPRINT\Jolimark_TP820D046,Jolimark_TP820D046
+"Jolimark TP820" = TP820.files,SERENUM\Jolimark_TP820D046,Jolimark_TP820D046
+
+[Jolimark.NTamd64.5.1]
+"Jolimark TP820" = TP820.files64,LPTENUM\Jolimark_TP820D046,Jolimark_TP820D046
+"Jolimark TP820" = TP820.files64,USBPRINT\Jolimark_TP820D046,Jolimark_TP820D046
+"Jolimark TP820" = TP820.files64,SERENUM\Jolimark_TP820D046,Jolimark_TP820D046
+
+[Jolimark.NTIA64.5.1]
+"Jolimark TP820" = TP820.files64,LPTENUM\Jolimark_TP820D046,Jolimark_TP820D046
+"Jolimark TP820" = TP820.files64,USBPRINT\Jolimark_TP820D046,Jolimark_TP820D046
+"Jolimark TP820" = TP820.files64,SERENUM\Jolimark_TP820D046,Jolimark_TP820D046
+
+;
+; Installer section(s) referenced above.
+;
+
+[TP820.files]
+CopyFiles=@TP820.DLL,@TP820.GPD,OEM_SETUP,@jmSettings.ini,@jmSettingsui.dll,@TP820_Settings.Dat
+DataSection=OEM_UNIDRV_DATA
+DataFile=TP820.GPD
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM,UNIDRV_DATA
+AddReg=UninstInfo.AddReg
+
+[TP820.files64]
+CopyFiles=@TP820.DLL,@TP820.GPD,OEM_SETUP,@jmSettings.ini,@jmSettingsui.dll,@TP820_Settings.Dat
+DataSection=OEM_UNIDRV_DATA
+DataFile=TP820.GPD
+Include=NTPRINT.INF
+Needs=UNIDRV.OEM,UNIDRV_DATA
+AddReg=UninstInfo.AddReg64
+
+[UninstInfo.AddReg]
+HKLM,"%UNINSTKEY%","caption",0x00000000,"%UNINSTCAPTION%"
+HKLM,"%UNINSTKEY%","DisplayName",0x00000000,"%UNINSTDISPLAY%"
+HKLM,"%UNINSTKEY%","UninstallString",0x00000000,"%52%\3\JmPrnUni.exe"
+HKLM,"%UNINSTKEY%\PrinterDrivers\%DRVNAME%","Leave OEM INF",0x00010001,0x00000001
+
+[UninstInfo.AddReg64]
+HKLM,"%UNINSTKEY64%","caption",0x00000000,"%UNINSTCAPTION%"
+HKLM,"%UNINSTKEY64%","DisplayName",0x00000000,"%UNINSTDISPLAY%"
+HKLM,"%UNINSTKEY64%","UninstallString",0x00000000,"%52%\3\JmPrnUni.exe"
+HKLM,"%UNINSTKEY64%\PrinterDrivers\%DRVNAME%","Leave OEM INF",0x00010001,0x00000001
+
+
+;[OEM_PROCES]
+;JMProces.dll,,,0x20 
+
+[OEM_SETUP]
+JmPrnUni.exe,,,0x20
+
+[OEM_UNIDRV_DATA]
+DriverFile=UNIDRV.DLL
+ConfigFile=UNIDRVUI.DLL
+HelpFile=UNIDRV.HLP
+;PrintProcessor="JMProces,JMProces.dll"
+
+[DestinationDirs]
+DefaultDestDir=66000
+;OEM_PROCES=66001
+
+
+[SourceDisksNames]
+81 = %disk1%,,,\i386
+
+[SourceDisksNames.x86]
+1 = %disk1%,,,\i386
+
+[SourceDisksNames.amd64]
+1 = %disk1%,,,\X64
+
+[SourceDisksNames.IA64]
+1 = %disk1%,,,\IA64
+
+[SourceDisksFiles]
+TP820.GPD = 81
+TP820.dll = 1
+;JMProces.dll=1
+JmPrnUni.exe = 81
+TP820_Settings.Dat = 81
+jmSettings.ini = 1
+jmSettingsui.dll = 1
+
+[OEM URLs]
+%ProviderName% = %JolimarkURL%
+
+[Strings]
+PrinterClassName="Printers"
+ProviderName="Jolimark"
+JolimarkURL = "http://www.Jolimark.com.cn"
+disk1="Jolimark Printer Driver Setup Disk"
+DRVNAME = "Jolimark TP820"
+UNINSTKEY = "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Jolimark Printer Utilities"
+UNINSTKEY64 = "SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Jolimark Printer Utilities"
+UNINSTCAPTION = "Jolimark Printer Drivers UnInstaller"
+UNINSTDISPLAY = "Remove Jolimark Printer Drivers"
+
